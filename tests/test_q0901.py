@@ -2,7 +2,7 @@
 
 import unittest
 
-from q0901 import count_ways_rec as ways_rec, count_ways_iter as ways_iter
+from src.q0901 import count_ways_rec as ways_rec, count_ways_iter as ways_iter
 
 
 class MyTests(unittest.TestCase):

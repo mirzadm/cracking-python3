@@ -2,7 +2,7 @@
 
 import unittest
 
-from q0301v1 import ThreeStack as Stack
+from src.q0301v1 import ThreeStack as Stack
 
 
 class MyTests(unittest.TestCase):

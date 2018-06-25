@@ -2,7 +2,7 @@
 
 import unittest
 
-from q0201 import (Node as Node, remove_duplicates as remove_duplicates,
+from src.q0201 import (Node as Node, remove_duplicates as remove_duplicates,
                    is_member as is_member)
 
 

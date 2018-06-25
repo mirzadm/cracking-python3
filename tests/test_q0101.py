@@ -1,8 +1,8 @@
-"""Unit tests."""
+"""Unit test"""
 
 import unittest
 
-from q0101 import is_all_unique_str as is_unique
+from src.q0101 import is_all_unique_str as is_unique
 
 
 class TestUniqueMethods(unittest.TestCase):

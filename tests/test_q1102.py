@@ -2,7 +2,7 @@
 
 import unittest
 
-from q1102 import is_anagram as is_anagram, sort_by_anagram as sort_by_anagram
+from src.q1102 import is_anagram as is_anagram, sort_by_anagram as sort_by_anagram
 
 
 class MyTests(unittest.TestCase):

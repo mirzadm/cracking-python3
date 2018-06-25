@@ -2,7 +2,7 @@
 
 import unittest
 
-from q0501 import insert_bits as insert_bits
+from src.q0501 import insert_bits as insert_bits
 
 
 class MyTests(unittest.TestCase):

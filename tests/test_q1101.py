@@ -2,7 +2,7 @@
 
 import unittest
 
-from q1101 import sort_array_buf as sort_array
+from src.q1101 import sort_array_buf as sort_array
 
 
 class MyTests(unittest.TestCase):
