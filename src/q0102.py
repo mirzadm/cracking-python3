@@ -1,18 +1,15 @@
-"""Reverse a string."""
-
-def reverse(string):
-    
-    n = len(string) 
-    string2 = ''
-
-    for i in range(n-1, -1, -1):
-        string2 += string[i]
-
-    return string2
+"""Reverses a string."""
 
 
-# print(reverse(''))
-# print(reverse('a'))
-# print(reverse('ab'))
-# print(reverse('0123456789'))
+def reverse(s):
+    n = len(s)
+    rev_s = ''
 
+    for i in range(n - 1, -1, -1):
+        rev_s += s[i]
+
+    return rev_s
+
+
+def reverse_shortcut(s):
+    return s[::-1]
