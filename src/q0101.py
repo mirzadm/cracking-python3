@@ -1,14 +1,14 @@
-""" Determine if a string has all unique characters. """
+"""Determines if a string has all unique characters."""
 
 
-# Use dictionary
-def is_all_unique_dict(str):
+def is_all_unique_dict(s):
+    """Uses dictionary."""
     count = {}
 
-    for ch in str:
+    for ch in s:
         count[ch] = 0
 
-    for ch in str:
+    for ch in s:
         count[ch] += 1
         if count[ch] > 1:
             return False
@@ -16,11 +16,11 @@ def is_all_unique_dict(str):
     return True
 
 
-# Use sets
-def is_all_unique_set(str):
+def is_all_unique_set(s):
+    """Uses set."""
     str_set = set()
 
-    for ch in str:
+    for ch in s:
         if ch in str_set:
             return False
         else:
@@ -29,10 +29,10 @@ def is_all_unique_set(str):
     return True
 
 
-# Use in operand in strings. More time instead of more space.
-def is_all_unique_str(str):
-    for i in range(len(str)):
-        if str[i] in str[i+1:]:
+def is_all_unique_str(s):
+    """Uses no extra space at the expense of time."""
+    for i in range(len(s)):
+        if s[i] in s[i+1 :]:
             return False
 
     return True
