@@ -1,7 +1,23 @@
-"""Zero-fill rows and cols having at least one zero."""
+"""Chapter 1: Question 7.
+
+Write an algorithm such that if an element in an MxN matrix is 0,
+its entire row and column are set to 0.
+"""
 
 
-def zero_matrix(matrix, n, m):
+def zero_fill_matrix(matrix, n, m):
+    """Zero-fill matrix.
+    
+    In-place zero-fill.
+    Args:
+        matrix: 2-dim list.
+        n: number of rows.
+        m: number of columns.
+    Returns:
+        Zero-filled matrix
+    """
+    if not matrix:
+        return matrix
 
     zero_rows = set()
     zero_cols = set()
@@ -20,8 +36,3 @@ def zero_matrix(matrix, n, m):
             matrix[row][col] = 0
 
     return matrix
-
-
-matrix = [[1, 0, 2], [3, 0, 4], [5, 6, 7]]
-
-print(zero_matrix(matrix, 3, 3))
