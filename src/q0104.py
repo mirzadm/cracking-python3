@@ -1,4 +1,7 @@
-"""Replaces spaces in a string with '%20'."""
+"""Chapter 1: Question 4.
+
+Write a method to replace all spaces in a string with'%20'.
+"""
 
 
 def replace_spaces(s):

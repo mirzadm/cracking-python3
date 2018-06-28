@@ -1,4 +1,8 @@
-"""Determines if two strings are permutaitons of each other."""
+"""Chapter 1: Question 3.
+
+Given two strings, write a method to decide if one is a permutation of
+the other.
+"""
 
 
 def is_permutation_sort(s1, s2):

@@ -1,4 +1,10 @@
-"""Reverses a string."""
+"""Chapter 1: Question 2.
+
+Implement a function `void reverse(char* str)` in C or C++ which reverses
+a null- terminated string.
+
+The solution is pythonic. String is not null terminated.
+"""
 
 
 def reverse(s):

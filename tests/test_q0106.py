@@ -6,7 +6,7 @@ from src.q0106 import (rotate_matrix_90_clk as rotate_matrix,
                        rotate_matrix__90_clk_inplace as rotate_matrix_inplace)
 
 
-class Test(unittest.TestCase):
+class TestRotateMatrix(unittest.TestCase):
     """Tests for matrix 90 degress clockwise rotation."""
     def setUp(self):
         self.m22 =   [[1, 2],

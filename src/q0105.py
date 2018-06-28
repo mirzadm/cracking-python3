@@ -1,8 +1,7 @@
-"""Compresses a string.
+"""Chapter 1: Question 5:
 
-Compression using the counts of repeated characters.
-Returns the compressed string only if its length is less than the original
-string.
+Implement a method to perform basic string compression using the counts
+of repeated characters. 
 
 Examples:
 abc         --> a1b1c1      return:     abc
