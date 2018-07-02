@@ -1,43 +1,30 @@
-"""Remove duplicates from a linked-list."""
-
-def remove_duplicates(first_head):
-
-    second_head = None
-    second_tail = None
-    current = first_head
-
-    while current is not None:
-        if not is_member(second_head, current.data):
-            temp = Node(current.data)
-            if second_tail is None:
-                second_tail = temp
-                second_head = temp
-            else:
-                second_tail.next = temp
-                second_tail = temp
-
-        current = current.next
-
-    return second_head
+"""Chapter 2: Question 1.
 
 
-def is_member(list_head, data):
-
-    result = False
-    if list_head is not None:
-        while (list_head.data != data) and (list_head.next is not None):
-            list_head = list_head.next
-
-        if list_head.data == data:
-            result = True
-
-    return result
+Write code to remove duplicates from an unsorted linked list.
+FOLLOW UP
+How would you solve this problem if a temporary buffer is not allowed?
+"""
 
 
-class Node:
+def remove_duplicates(linked_list):
+    """Removes duplicate element using a set.
 
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+    Args:
+        linked_list: An instance object of LinkedList
 
-
+    Returns:
+        None. Modifies input argument.
+    """
+    current = linked_list.head
+    previous = None
+    unique_elements = set()
+    while current:
+        if current.data in unique_elements:
+            previous.next_node = current.next_node
+            del current
+            current = previous.next_node
+        else:
+            unique_elements.add(current.data)
+            previous = current
+            current = current.next_node
