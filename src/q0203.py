@@ -11,28 +11,24 @@ Linked list would be updated to a->b->d->e.
 def del_intermediate_node(node):
     """Deletes a node in the middle of a linked list.
 
-    We only have access to to-be-deleted node. Starting form the node shift
-    left nodes on right, then delete that last node.
+    We only have access to to-be-deleted node. Copy data from next node then
+    delete next node.
 
     Args:
         node: An instace obejct of class Node. Points to the node to be
         deleted. It can not be the last node.
     Returns:
-        node.data is successful None otherwise.
+        True if successful False otherwise.
     """
     # it can't be the last node
     if not node:
-        return None
+        return False
     if not node.next_node:  # It can't be the last node
-        return None
+        return False
 
-    current = node
-    temp = node.data
-    while current.next_node:
-        previous = current
-        current = current.next_node
-        previous.data = current.data
+    temp = node.next_node
+    node.data = temp.data
+    node.next_node = temp.next_node
+    del temp
 
-    previous.next_node = None
-    del current
-    return temp
+    return True
