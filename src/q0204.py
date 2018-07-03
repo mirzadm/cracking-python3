@@ -1,62 +1,53 @@
-"""Partition a linked list around a value."""
+"""Chapter 2: Question 4.
+
+Write code to partition a linked list around a value x, such that all nodes
+less than x come before all nodes greater than or equal to x.
+"""
 
 
-from linked_list import Node, LinkedList
+def partition_linkedlist_around_value(linked_list, x):
+    """Patitions a linkedlist around a given value x.data
 
+    Travese the linked list, insert nodes with node.data >= x at the end.
+    Args:
+        linked_list: An instace object of class LinkedList.
+        x: value of type LinkedList.data
 
-def partition_linkedlist(linklist, x):
-    
-    head = linklist.head
+    Returns:
+        Reference to modified linked_list. Changes the input linked_list
+        argument.
+    """
+    if (not linked_list or not linked_list.head or
+        not linked_list.head.next_node):
+        # Change nothing
+        return linked_list
 
-    if head is None or head.next is None:
-        return linklist
-    
-    # find tail
-    current = head
-    while current.next is not None:
-        current = current.next
-    
-    tail = current
-
+    # Find the tail node
+    current = linked_list.head
+    while current.next_node:
+        current = current.next_node
+    original_tail = current
+    # Setup pointers
+    new_tail = original_tail
     previous = None
-    current = head
-    new_tail = tail
-    
-    while current != tail:
-        if current.value >= x:
-            if current != head:
-                previous.next = current.next
-                new_tail.next = current
-                current.next = None
+    current = linked_list.head
+    # Partition
+    while current != original_tail:
+        if current.data >= x:
+            if previous:
+                previous.next_node = current.next_node
+                new_tail.next_node = current
+                current.next_node = None
                 new_tail = current
-                current = previous.next
+                current = previous.next_node
             else:
-                head = current.next
-                new_tail.next = current
-                current.next = None
+                linked_list.head = current.next_node
+                new_tail.next_node = current
+                current.next_node = None
                 new_tail = current
-                current = head
-                
+                current = linked_list.head
         else:
             previous = current
-            current = current.next
+            current = current.next_node
 
-    linklist.head = head
-    return linklist
-
-
-# # create a linked list
-# a = [5, 6, 7]
-# x = 5
-
-# my_list = LinkedList()
-
-# for item in a:
-#     n = Node(item)
-#     my_list.insert_at_tail(n)
-
-# print(my_list.convert_to_list())
-
-# # partition and print
-# partition_linkedlist(my_list, x)
-# print(my_list.convert_to_list())
+    return linked_list
