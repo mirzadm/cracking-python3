@@ -1,7 +1,7 @@
 """Chapter 2: Question 4.
 
-Write code to partition a linked list around a value x, such that all nodes
-less than x come before all nodes greater than or equal to x.
+Partition a linked list around a given value x such that left side is < x and
+right side is >= x.
 """
 
 
