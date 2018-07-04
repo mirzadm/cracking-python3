@@ -1,6 +1,6 @@
 """Chapter 1: Question 4.
 
-Write a method to replace all spaces in a string with'%20'.
+Repalce all spaces in a string with '%20'.
 """
 
 

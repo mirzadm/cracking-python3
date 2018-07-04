@@ -1,4 +1,12 @@
-"""Add two linked lists representing two numbers."""
+"""Chapter 2: Question 5.
+
+
+You have two numbers represented by a linked list, where each node contains a
+single digit.The digits are stored in reverse order,suchthatthe 1'sdigitisat thehead of the list. Write a function that adds the two numbers and returns the sum as a linked list.
+FOLLOW UP
+Suppose the digits are stored in forward order. Repeat the above problem.
+
+"""
 
 
 from linked_list import Node, LinkedList

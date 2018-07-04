@@ -1,11 +1,9 @@
 """Chapter 1: Question 5:
 
-Implement a method to perform basic string compression using the counts
-of repeated characters. 
-
+Compress a string by forming a new string that has character counts.
 Examples:
-abc         --> a1b1c1      return:     abc
-aabcccccaaa --> a2b1c5a3    return:     a2b1c5a3
+abc         --> a1b1c1      (bigger than original returns abc)
+aabcccccaaa --> a2b1c5a3    (smaller than original returns a2b1c5a3)
 """
 
 

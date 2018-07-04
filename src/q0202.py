@@ -1,6 +1,6 @@
 """Chapter 2: Question 2.
 
-Implement an algorithm to find the kth to last element of a singly linked list.
+Find the kth to last element of a linked list.
 """
 
 

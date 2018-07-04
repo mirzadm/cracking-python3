@@ -1,7 +1,6 @@
 """Chapter 1: Question 3.
 
-Given two strings, write a method to decide if one is a permutation of
-the other.
+Is string 1 a permuation of string 2?
 """
 
 

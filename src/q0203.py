@@ -1,10 +1,6 @@
 """Chapter 2: Question 3.
 
-Implement an algorithm to delete a node in the middle of a singly linked list,
-given only access to that node.
-EXAMPLE
-Input: the node c from the linked list a->b->c->d->e.
-Linked list would be updated to a->b->d->e.
+How do you delete a node in linked list given only access to that node?
 """
 
 
