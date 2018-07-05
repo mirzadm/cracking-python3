@@ -1,85 +1,49 @@
-"""Check if a linked list is a palindrome."""
+"""Chapter 2: Question 7.
+
+Is a given linked list a plindrome? (samee backward and forward).
+"""
+
+from src.utils.linkedlist import LinkedList
 
 
-from linked_list import Node, LinkedList
-
-
-def is_palindrome(link):
+def is_palindrome(linked_list):
+    """Checks if linked_list is a palindrome.
     
-    if link is None or link.head is None:
-        return False
+    Creates a second linked list to store the first half of input in reverse
+    order. Then compares the second half of input with second linked list.
+
+    Args:
+        linked_list: An instance object of tyep LinkedList.
+    Return:
+        True if palindrome, false otherwise.
+    """
+
+    if not linked_list.head or not linked_list.head.next_node:
+        return True  # Consider an empty linked list a palindrome
+
+    current = linked_list.head
+    n = 0
+    while current:
+        current = current.next_node
+        n += 1
+
+    k = n // 2
+    current = linked_list.head
+    reverse_linked_list = LinkedList()
+
+    while k:
+        reverse_linked_list.insert_at_head(current.data)
+        current = current.next_node
+        k -= 1
+
+    if n % 2 == 1:
+        current = current.next_node
     
-    # find length
-    cur = link.head
-    k = 0
-    while cur is not None:      
-        cur = cur.next
-        k += 1
-
-    h = k // 2
-    cur = link.head
-    rev_link = LinkedList()
-
-    while h != 0:
-        n = Node(cur.value)
-        n.next = rev_link.head
-        rev_link.head = n
-        cur = cur.next
-        h -= 1
-
-    if k % 2 == 1:
-        cur = cur.next
-    
-    p = rev_link.head
-    while p is not None:
-        if p.value != cur.value:
+    p = reverse_linked_list.head
+    while p:
+        if p.data != current.data:
             return False
-        p = p.next
-        cur = cur.next
+        p = p.next_node
+        current = current.next_node
     
     return True
-
-
-# Using slow and fast pointers. 
-# Time: O(n). Space: O(n)
-
-def is_palindrome_slow_fast(link):
-
-    if link is None or link.head is None:
-        return None
-
-    slow = fast = link.head
-
-    if slow.next is None:
-        return True
-    elif slow.next.next is None:
-        return slow.value == slow.next.value
-
-    stack = []
-    while fast.next is not None and fast.next.next is not None:
-        stack.append(slow)
-        fast = fast.next.next
-        slow = slow.next
-    
-    # If odd number nodes in the list, pop the mid element
-    if fast.next is not None:
-        stack.append(slow)
-    
-    slow = slow.next
-    
-    while slow is not None:
-        n = stack.pop()
-        if n.value != slow.value:
-            return False
-        slow = slow.next
-    
-    return True
-
-
-# a = [1, 2, 3, 2, 1]
-# link = LinkedList()
-# for item in a:
-#     n = Node(item)
-#     link.insert_at_head(n)
-
-# print(is_palindrome_slow_fast(link))
