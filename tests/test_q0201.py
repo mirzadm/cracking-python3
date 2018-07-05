@@ -2,7 +2,7 @@
 
 import unittest
 
-from src.utils.linkedlist import LinkedList, Node
+from src.utils.linkedlist import LinkedList
 from src.q0201 import remove_duplicates
 
 
