@@ -1,109 +1,51 @@
 """Chapter 2: Question 5.
 
 
-You have two numbers represented by a linked list, where each node contains a
-single digit.The digits are stored in reverse order,suchthatthe 1'sdigitisat thehead of the list. Write a function that adds the two numbers and returns the sum as a linked list.
-FOLLOW UP
-Suppose the digits are stored in forward order. Repeat the above problem.
-
+Add two numbers represented by linked lists and return the result as a linked
+list.
+1 -> 2 -> 3     321
+4 -> 5           54
+                375 
 """
 
+from src.utils.linkedlist import LinkedList, Node
 
-from linked_list import Node, LinkedList
 
+def add_linkedlist_nums(linked_list1, linked_list2):
+    """Returns sum of two linked lists representing numbers.
 
-def add_linkedlists_back(link1, link2):
-    
-    result = LinkedList()
-    if link1.head is None and link2.head is None:
-        return result
+    Args:
+        linked_list1: First number. A LinkedList instance object.
+        linked_list2: Second number. A LinkedList instance object.
+    Returns:
+        Sum as a LinkedList instance object. 
+    """
 
-    cur1 = link1.head
-    cur2 = link2.head
-    cur3 = None
+    sum_linked_list = LinkedList()        
+    current1 = linked_list1.head
+    current2 = linked_list2.head
+    current3 = None
     carry = 0
-
-    while cur1 is not None or cur2 is not None:
+    while current1 or current2:
         subsum = carry
-        if cur1 is not None:
-            subsum += cur1.value
-            cur1 = cur1.next
-        if cur2 is not None:
-            subsum += cur2.value
-            cur2 = cur2.next
+        if current1:
+            subsum += current1.data
+            current1 = current1.next_node
+        if current2:
+            subsum += current2.data
+            current2 = current2.next_node
 
         carry = subsum // 10
-        n = Node(0)
-        n.value = subsum % 10
-        if cur3 is None:
-            result.head = n
-            cur3 = n
+        node = Node(subsum % 10)
+        if not current3:
+            sum_linked_list.head = node
+            current3 = node
         else:
-            cur3.next = n
-            cur3 = n
+            current3.next_node = node
+            current3 = node
     
     if carry == 1:
-        n = Node(1)
-        cur3.next = n
-        
-    
-    return result
+        node = Node(1)
+        current3.next_node = node
 
-
-# ----------------------------------------------------------------------------
-# Followup: what if number are given in forward order
-
-
-def calc_linkedlist(link):
-    
-    if link is None:
-        return 0
-    
-    cur = link.head
-    sum = 0 
-    while cur is not None:
-        sum *= 10
-        sum += cur.value
-        cur = cur.next
-    
-    return sum
-
-
-def add_linkedlists_forward(link1, link2):
-    
-    sum = 0
-    sum += calc_linkedlist(link1)
-    sum += calc_linkedlist(link2)
-    
-    result = LinkedList()
-    if sum == 0:
-        n = Node(0)
-        result.head = n
-    else:   
-        while sum != 0:
-            n = Node(sum % 10)
-            result.insert_at_head(n)
-            sum = sum // 10
-    
-    return result
-
-
-# # create 2 linked lists
-# a = [1, 2]
-# b = []
-
-# d1 = LinkedList()
-# d2 = LinkedList()
-
-# for item in a:
-#     n = Node(item)
-#     d1.insert_at_tail(n)
-
-# for item in b:
-#     n = Node(item)
-#     d2.insert_at_tail(n)
-
-# d3 = add_linkedlists_forward(d1, d2)
-# print(d3.convert_to_list())
-
-
+    return sum_linked_list
