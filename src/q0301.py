@@ -2,8 +2,6 @@
 
 Use one array to implement 3 stacks.
 """
-def some_function():
-    raise ValueError
 
 
 class ThreeStacks:

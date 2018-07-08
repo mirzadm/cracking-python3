@@ -2,7 +2,7 @@
 
 import unittest
 
-from src.q0301 import ThreeStacks, some_function
+from src.q0301 import ThreeStacks
 
 
 class TestThreeStacks(unittest.TestCase):
