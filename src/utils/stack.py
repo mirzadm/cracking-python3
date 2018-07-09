@@ -18,7 +18,7 @@ class Stack:
 
     def peek(self):
         if self.is_empty():
-            return None
+            raise IndexError('Stack is empty.')
         else:
             return self.stack_list[-1]
 
