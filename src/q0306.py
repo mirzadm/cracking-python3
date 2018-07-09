@@ -1,76 +1,52 @@
-"""Sort a stack using one additional stack."""
+"""Chapter 3: Question 6.
+
+Sort a stack using one additional stack and not other data structure.
+"""
+
+from src.utils.stack import Stack
 
 
-def sort_stack(s1):
+def sort_stack_iterative(s1):
+    """Sorts s1 interatively using a scondary stack. 
+
+    Ascending sort: bigger items on top.
+    """
+
     s2 = Stack()
+    # Sort items in descending order in s2
     while not s1.is_empty():
-        t = s1.pop()
-        c = 0
-        while not s2.is_empty() and t > s2.peek():
-            k = s2.pop()
-            s1.push(k)
-            c += 1
+        next_item = s1.pop()
+        count = 0
+        while not s2.is_empty() and next_item > s2.peek():
+            s1.push(s2.pop())
+            count += 1
 
-        s2.push(t)
+        s2.push(next_item)
     
-        while c > 0:
+        while count > 0:
             s2.push(s1.pop())
-            c -= 1
-
+            count -= 1
+    # Move items back to s1 and reverse the order to ascedning
     while not s2.is_empty():
         s1.push(s2.pop())
 
-    return s1
 
+def sort_stack_recursive(n, s1, s2):
+    """Sorts top n items in s1 recursively using s2.
 
-class Node:
-    def __init__(self):
-        self.value = None
-        self.next = None
+    Ascending sort: bigger items on top.
+    """
+    if n >= 2:
+        sort_stack_recursive(n-1, s1, s2)
 
+        count = n - 1
+        while count > 0:
+            s2.push(s1.pop())
+            count -= 1
 
-class Stack:
-    
-    def __init__(self):
-        self.top = None
-
-    def push(self, item):
-        n = Node()
-        n.value = item
-        if self.is_empty():
-            self.top = n
-        else:
-            n.next = self.top
-            self.top = n
-
-    def pop(self):
-        if self.is_empty():
-            return None
-        else:
-            t = self.top.value
-            self.top = self.top.next
-            return t
-    
-    def peek(self):
-        if self.is_empty():
-            return None
-        else:
-            return self.top.value
-
-    def is_empty(self):
-        return self.top is None 
-
-
-def test():
-    a = [7, 4, 3, 5, 2, 1, 6]
-    s = Stack()
-    for i in a:
-        s.push(i)
-    sort_stack(s)
-    while not s.is_empty():
-        print(s.pop())
-
-
-if __name__ == '__main__':
-    test()
-
+        next_item = s1.pop()
+        while not s2.is_empty() and next_item > s2.peek():
+            s1.push(s2.pop())
+        s1.push(next_item)
+        while not s2.is_empty():
+            s1.push(s2.pop())
