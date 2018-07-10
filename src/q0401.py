@@ -1,52 +1,37 @@
-"""Check whether a binary tree is balanced."""
+"""Chapter 4: Queston 1.
+
+Check if a binary tree is balanced: heights of subtrees of any node differ at
+most by 1.
+"""
 
 
-def height_balance(node):
-    if node is None:
-        return 0
-    left_height = height_balance(node.left)
-    if left_height == -1:
-        return -1
-    
-    right_height = height_balance(node.right)
-    if right_height == -1:
-        return -1
-    
-    if abs(left_height - right_height) >= 2:
-        return -1
+def check_tree_balance(bin_tree):
+    """Returns True if bin_tree is balanced and False otherwise.
+
+    Args:
+        bin_tree: An instance object of class BinaryTree.
+    """
+
+    if balanced_height(bin_tree.root_node) is None:
+        return False
     else:
+        return True
+
+
+def balanced_height(sub_root):
+    """Returns height if subtree is balanced, None otherwise."""
+
+    if sub_root is None:
+        return -1
+    left_height = balanced_height(sub_root.left_child)
+    if left_height is None:
+        return None
+    
+    right_height = balanced_height(sub_root.right_child)
+    if right_height is None:
+        return None
+    
+    if abs(left_height - right_height) <= 1:
         return max(left_height, right_height) + 1
-
-
-class BinaryNode:
-
-    def __init__(self, value=None):
-        self.value = value
-        self.left = None
-        self.right = None
-
-
-def test():
-    nodes = [BinaryNode(i) for i in range(7)]
-    nodes[0].left = nodes[1]
-    nodes[0].right = nodes[2]
-    nodes[1].left = nodes[3]
-    nodes[1].right = nodes[4]
-    nodes[3].left = nodes[5]
-    # nodes[2].left = nodes[5]
-    # nodes[2].right = nodes[6]
-    
-    print(height_balance(nodes[0]))
-
-
-if __name__ == '__main__':
-    test()
-
-
-    
-
-
-        
-
-
-
+    else:
+        return None
