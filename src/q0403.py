@@ -1,4 +1,7 @@
-"""Create a binary search tree from a sorted array, with minimal height."""
+"""Chapter 4: Question 3.
+
+Create a binary search tree from a sorted array, with minimal height.
+"""
 
 
 class TreeNode:
@@ -12,27 +15,26 @@ class TreeNode:
 class BinaryTree:
     
     def __init__(self, root=None):
-        self.root = None
-        
+        self.root_node = None
 
-def array_to_bst(array):    
+
+def sorted_array_to_bin_search_tree(array):    
+    bin_tree = BinaryTree()   
     if array == []:
-        return None
-
-    bt = BinaryTree()
-        
-    bt.root = TreeNode()
+        return bin_tree
     
+    bin_tree.root_node = TreeNode()
+
     high = len(array) - 1
     low = 0
     mid = (low + high) // 2
     
-    bt.root.data = array[mid]
+    bin_tree.root_node.data = array[mid]
 
-    bt.root.left = sub_array_bst(array, low, mid-1)
-    bt.root.right = sub_array_bst(array, mid+1, high)
+    bin_tree.root_node.left = sub_array_bst(array, low, mid-1)
+    bin_tree.root_node.right = sub_array_bst(array, mid+1, high)
     
-    return bt
+    return bin_tree
 
 
 def sub_array_bst(array, low, high):
@@ -46,35 +48,3 @@ def sub_array_bst(array, low, high):
     n.right = sub_array_bst(array, mid+1, high)
 
     return n
-
-
-def bfs_bt(tree):
-    array = []
-    i = 0
-    k = 0
-    array.append(tree.root)
-    k += 1
-    while i < k:
-        n = array[i]
-        i += 1
-        if n.left is not None:
-            array.append(n.left)
-            k += 1
-        if n.right is not None:
-            array.append(n.right)
-            k += 1
-    
-    return array
-
-
-def test():    
-    a = list(range(5))
-    print(a)
-    bt = array_to_bst(a)   
-    b = bfs_bt(bt)
-    values = [node.data for node in b]
-    print(values)
-
-
-if __name__ == '__main__':
-    test()
