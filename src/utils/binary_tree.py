@@ -88,7 +88,7 @@ class BinaryTree:
         Args:
             sub_root: An instance object of class BinaryTreeNode.
             adj_dict: An adjacency dictionary. Refer to
-            `create_tree_from_adj_dict` for description.
+            `adjacency_to_tree` for description.
         """
 
         if sub_root.left_child is None:
