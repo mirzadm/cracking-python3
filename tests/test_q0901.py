@@ -1,25 +1,25 @@
-"""Unit tests."""
+"""Unit tests for q0901.py."""
 
 import unittest
 
-from src.q0901 import count_ways_rec as ways_rec, count_ways_iter as ways_iter
+from src.q0901 import run_up_stairs_rec, run_up_stairs_iter
 
 
-class MyTests(unittest.TestCase):
+class TestRunStairs(unittest.TestCase):
 
-    def test_rec(self):
-        self.assertEqual(ways_rec(0), 0)
-        self.assertEqual(ways_rec(1), 1)
-        self.assertEqual(ways_rec(2), 2)
-        self.assertEqual(ways_rec(3), 4)
-        self.assertEqual(ways_rec(4), 7)
+    def test_run_up_stairs_rec(self):
+        self.assertEqual(run_up_stairs_rec(0), 0)
+        self.assertEqual(run_up_stairs_rec(1), 1)
+        self.assertEqual(run_up_stairs_rec(2), 2)
+        self.assertEqual(run_up_stairs_rec(3), 4)
+        self.assertEqual(run_up_stairs_rec(4), 7)
 
-    def test_iter(self):
-        self.assertEqual(ways_iter(0), 0)
-        self.assertEqual(ways_iter(1), 1)
-        self.assertEqual(ways_iter(2), 2)
-        self.assertEqual(ways_iter(3), 4)
-        self.assertEqual(ways_iter(4), 7)
+    def test_run_up_stairs_iter(self):
+        self.assertEqual(run_up_stairs_iter(0), 0)
+        self.assertEqual(run_up_stairs_iter(1), 1)
+        self.assertEqual(run_up_stairs_iter(2), 2)
+        self.assertEqual(run_up_stairs_iter(3), 4)
+        self.assertEqual(run_up_stairs_iter(4), 7)
 
 
 if __name__ == '__main__':
