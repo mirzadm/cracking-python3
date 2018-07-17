@@ -1,40 +1,30 @@
-"""Number of bit changes to convert one integer to another."""
+"""Chapter 5: Question 5.
+
+Given two numbers, count number of bits that are not equal between them.
+Example: 2 and 3 have one bit that is differnt between them.
+"""
 
 
-def bits_to_convert(a, b):
+def count_unequal_bits(a, b):
+    """Counts number of bits that are different between them a and b.
+
+    Args:
+        a, b: Non-negative integers.
+    Returns:
+        Number of bits different between a and b.
+    Raises:
+        ValueError: If either of the arguments is negative.
+    """
+    if a < 0 or b < 0:
+        raise ValueError('Input arguments must be >= 0.')
+    
     c = a ^ b
-    k = c.bit_length()
     count = 0
-    while k > 0:
-        if c & 1 == 1:
-            count += 1
-        c = c >> 1
-        k -= 1
-        
+    while  c != 0:
+        c = c & (c - 1)
+        count += 1
+    # A easier way to do is
+        # if c & 1 == 1:
+        #     count += 1
+        # c = c >> 1
     return count
-
-
-import unittest
-
-
-class Test(unittest.TestCase):
-
-    def test_bits_to_convert(self):
-        self.assertEqual(bits_to_convert(0,0), 0)       
-        self.assertEqual(bits_to_convert(1,1), 0)
-        self.assertEqual(bits_to_convert(100,100), 0)
-        self.assertEqual(bits_to_convert(1,0), 1)
-        self.assertEqual(bits_to_convert(0,1), 1)
-        self.assertEqual(bits_to_convert(3,1), 1)
-        self.assertEqual(bits_to_convert(1,3), 1)
-        self.assertEqual(bits_to_convert(2,1), 2)
-        self.assertEqual(bits_to_convert(1,2), 2)
-        self.assertEqual(bits_to_convert(-1,0), 1)
-        self.assertEqual(bits_to_convert(-1,1), 1)
-        self.assertEqual(bits_to_convert(-1,-2), 1)
-        self.assertEqual(bits_to_convert(-1,2), 1)
-        self.assertEqual(bits_to_convert(1234, 1234 ^ 32), 1)
-
-
-if __name__ == '__main__':
-    unittest.main()
