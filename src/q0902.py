@@ -13,7 +13,7 @@ def find_path(src_x, src_y, dest_x, dest_y, blocked_points, no_path_to_dest):
     Args:
         src_x, src_y: Source coordinates. Integer >= 0.
         dest_x, dest_y: Destination coordinates. Integer >= 0.
-        blocked_points: A set representing all block coordinates on the gridl
+        blocked_points: A set representing all block coordinates on the grid.
         no_path_to_dest: Set of points with no path to destination. 
                          Caller must provide and empty set as the argument.
     Returns:
